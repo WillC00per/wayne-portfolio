@@ -19,8 +19,63 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Game-themed styles */
+.glow-text {
+  text-shadow: 0 0 10px rgba(14, 165, 233, 0.5),
+               0 0 20px rgba(14, 165, 233, 0.3),
+               0 0 30px rgba(14, 165, 233, 0.1);
+}
+
+.glow {
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.5),
+              0 0 20px rgba(74, 222, 128, 0.3),
+              0 0 30px rgba(74, 222, 128, 0.1);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Card dealing animation styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Custom fonts for tech stacks */
+.font-robot {
+  font-family: 'Roboto', sans-serif;
+}
+
+.font-mono {
+  font-family: 'Fira Code', monospace;
+}
+
+/* Add any other custom fonts you want to use */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+.project-grid > * {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-grid:hover > *:not(:hover) {
+  opacity: 0.5;
+  transform: scale(0.98);
 }
