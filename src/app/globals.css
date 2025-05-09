@@ -63,19 +63,23 @@ body {
   font-family: 'Fira Code', monospace;
 }
 
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
 /* Add any other custom fonts you want to use */
 
 .project-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .project-grid > * {
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-grid:hover > *:not(:hover) {
-  opacity: 0.5;
-  transform: scale(0.98);
+  opacity: 0.4;
+  filter: grayscale(100%) blur(2px);
 }
