@@ -1,25 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'cdn.jsdelivr.net',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.simpleicons.org',
-      }
-    ],
+    domains: ['www.megavoxels.com'],
     unoptimized: true,
-    dangerouslyAllowSVG: true,
+  },
+  // Add these configurations
+  experimental: {
+    optimizeCss: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  }
+  // Increase timeout
+  staticPageGenerationTimeout: 1000,
 }
 
 module.exports = nextConfig
