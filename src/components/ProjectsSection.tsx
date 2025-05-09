@@ -4,55 +4,53 @@ import { FC } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-const PLACEHOLDER = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRseHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/2wBDAR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=";
-
 const projects = [
   {
     title: "Truck Delivery Automation",
     description: "End-to-end automation system including inventory management, PO generation, and business analytics",
     tech: ["Node.js", "React", "SQL", "Analytics"],
-    staticImage: PLACEHOLDER,
-    animatedImage: PLACEHOLDER,
+    staticImage: "/images/truck-delivery.png",
+    animatedImage: "/images/truck-delivery.gif",
     link: "#truck-delivery"
   },
   {
     title: "Science Quest",
     description: "2D Unity game developed in C# that makes learning science fun and interactive for students",
     tech: ["Unity", "C#", "Game Development", "Educational Design"],
-    staticImage: PLACEHOLDER,
-    animatedImage: PLACEHOLDER,
+    staticImage: "/images/science-quest.jpg",
+    animatedImage: "/images/science-quest.gif",
     link: "#science-quest"
   },
   {
     title: "ICS System - Civil Service Commission",
     description: "Streamlined document generation system for inventory management, reducing process time by 75%",
     tech: ["Database Design", "Process Automation", "Document Generation"],
-    staticImage: PLACEHOLDER,
-    animatedImage: PLACEHOLDER,
+    staticImage: "/images/ics-system.png",
+    animatedImage: "/images/ics-system.gif",
     link: "#ics-system"
   },
   {
     title: "SiyenSaya - Gamified E-Learning",
     description: "Interactive educational platform making science engaging for elementary students",
     tech: ["Game Development", "Educational Design", "React", "Node.js"],
-    staticImage: PLACEHOLDER,
-    animatedImage: PLACEHOLDER,
+    staticImage: "/images/truck-delivery.png",
+    animatedImage: "/images/truck-delivery.gif",
     link: "#siyensaya"
   },
   {
     title: "Manga Recommendation AI",
     description: "AI-powered system for personalized manga recommendations (In Progress)",
     tech: ["Machine Learning", "Python", "React"],
-    staticImage: PLACEHOLDER,
-    animatedImage: PLACEHOLDER,
+    staticImage: "/images/truck-delivery.png",
+    animatedImage: "/images/truck-delivery.gif",
     link: "#manga-ai"
   },
   {
     title: "PBA Website Restoration",
     description: "Modern restoration of the Philippine Basketball Association website (In Progress)",
     tech: ["Next.js", "TypeScript", "API Integration"],
-    staticImage: PLACEHOLDER,
-    animatedImage: PLACEHOLDER,
+    staticImage: "/images/truck-delivery.png",
+    animatedImage: "/images/truck-delivery.gif",
     link: "#pba-website"
   }
 ];
@@ -130,12 +128,8 @@ const ProjectsSection: FC = () => {
                   <Image
                     src={project.staticImage}
                     alt={project.title}
-                    width={800}
-                    height={600}
-                    className="object-cover w-full h-full transition-all duration-500 group-hover:scale-110 group-hover:blur-sm"
-                    placeholder="blur"
-                    blurDataURL={PLACEHOLDER}
-                    priority={i < 2}
+                    fill
+                    className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:blur-sm"
                   />
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
