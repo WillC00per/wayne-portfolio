@@ -1,0 +1,28 @@
+name: Auto Push
+
+on:
+  push:
+    paths-ignore:
+      - '.github/**'
+
+jobs:
+  auto-push:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        
+    - name: Commit and push if changed
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto-push: Save changes"
+          git push
+        fi

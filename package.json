@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "save-and-push": "git add . && git commit -m \"Auto-save commit\" && git push"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.2",
