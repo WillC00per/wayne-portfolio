@@ -20,7 +20,7 @@ const AboutSection: FC = () => (
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2 }}
       >
-        Hi, I'm <span className="font-bold text-tech-blue dark:text-neon-green">Wayne Chandler Gomez</span>, a passionate developer with a love for building robust, scalable, and user-friendly solutions. 
+        Hi, I&apos;m <span className="font-bold text-tech-blue dark:text-neon-green">Wayne Chandler Gomez</span>, a passionate developer with a love for building robust, scalable, and user-friendly solutions. 
         <br /><br />
         My journey spans <span className="font-semibold">web, mobile, and game development</span>—from automating business processes to gamifying learning for the next generation. 
         <br /><br />

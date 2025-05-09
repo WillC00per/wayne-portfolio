@@ -1,8 +1,7 @@
 "use client";
 
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { motion } from 'framer-motion';
-import ProjectCard from './ProjectCard';
 import Image from 'next/image';
 
 const projects = [
@@ -57,8 +56,6 @@ const projects = [
 ];
 
 const ProjectsSection: FC = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
     <section className="py-20 px-4 bg-dark-bg min-h-screen">
       <motion.div

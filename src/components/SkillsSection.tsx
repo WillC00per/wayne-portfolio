@@ -2,6 +2,7 @@
 
 import { FC } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const skills = [
   { 
@@ -77,7 +78,7 @@ const SkillsSection: FC = () => {
           viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 perspective-1000"
         >
-          {skills.map((skill, index) => (
+          {skills.map((skill) => (
             <motion.div
               key={skill.name}
               variants={cardVariants}
@@ -88,15 +89,16 @@ const SkillsSection: FC = () => {
               }}
             >
               <div className="w-20 h-20 flex items-center justify-center rounded-xl bg-white shadow-lg mb-3 group-hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2">
-                <img
+                <Image
                   src={
                     skill.icon === "mui"
                       ? "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg"
                       : `https://cdn.simpleicons.org/${skill.icon}/0EA5E9`
                   }
                   alt={skill.name}
-                  className="w-12 h-12 group-hover:scale-110 transition-transform duration-300"
-                  loading="lazy"
+                  width={48}
+                  height={48}
+                  className="group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
               <span className={`${skill.font} text-gray-700 font-medium text-sm group-hover:text-tech-blue transition-colors duration-300`}>
