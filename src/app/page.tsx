@@ -23,42 +23,22 @@ export default function Home() {
   };
 
   return (
-    <main className="relative">
+    <main className="relative bg-dark-bg">
       <Navbar />
-      <motion.div
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={fadeInUp}
-      >
+      <motion.div variants={fadeInUp}>
         <HeroSection />
       </motion.div>
 
-      <motion.div
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={fadeInUp}
-      >
-        <AboutSection />
+      <motion.div variants={fadeInUp}>
+        <ProjectsSection />
       </motion.div>
 
-      <motion.div
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerChildren}
-      >
+      <motion.div variants={fadeInUp}>
         <SkillsSection />
       </motion.div>
 
-      <motion.div
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={fadeInUp}
-      >
-        <ProjectsSection />
+      <motion.div variants={fadeInUp}>
+        <AboutSection />
       </motion.div>
     </main>
   );

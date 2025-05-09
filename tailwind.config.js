@@ -8,11 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'tech-blue': '#0EA5E9',
-        'deep-teal': '#0D9488',
-        'neon-green': '#4ADE80',
-        'dark-bg': '#1E1E1E', // Updated to aesthetic gray
-        'card-bg': '#1E293B',
+        'tech-blue': '#64748b',
+        'deep-teal': '#475569',
+        'neon-blue': '#38bdf8',
+        'dark-bg': '#0f172a',
+        'card-bg': '#1e293b',
+        'hover-bg': '#334155',
+        'text-primary': '#f8fafc',
+        'text-secondary': '#cbd5e1',
+        'accent-light': '#93c5fd'
       },
       animation: {
         'flow': 'flow 20s linear infinite',

@@ -1,35 +1,41 @@
 "use client";
 
-import { FC } from "react";
-import { motion } from "framer-motion";
+import { FC, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
+// Add project types to skills
 const skills = [
   { 
     name: "Android Studio", 
     icon: "androidstudio",
-    font: "font-robot" // Android's Roboto font style
+    font: "font-robot",
+    relatedProjects: []
   },
   { 
     name: "Node.js", 
     icon: "nodedotjs",
-    font: "font-mono" // Monospace for backend
+    font: "font-mono",
+    relatedProjects: []
   },
   { 
     name: "React", 
     icon: "react",
-    font: "font-sans" // Clean modern font
+    font: "font-sans",
+    relatedProjects: ["Truck Delivery Automation", "SiyenSaya - Gamified E-Learning", "Manga Recommendation AI"]
   },
-  { name: "SQL", icon: "mysql", font: "font-sans" },
-  { name: "MongoDB", icon: "mongodb", font: "font-sans" },
-  { name: "HTML5", icon: "html5", font: "font-sans" },
-  { name: "CSS3", icon: "css3", font: "font-sans" },
-  { name: "Unity", icon: "unity", font: "font-sans" },
-  { name: "Bootstrap", icon: "bootstrap", font: "font-sans" },
-  { name: "MUI", icon: "mui", font: "font-sans" },
+  { name: "SQL", icon: "mysql", font: "font-sans", relatedProjects: [] },
+  { name: "MongoDB", icon: "mongodb", font: "font-sans", relatedProjects: [] },
+  { name: "HTML5", icon: "html5", font: "font-sans", relatedProjects: [] },
+  { name: "CSS3", icon: "css3", font: "font-sans", relatedProjects: [] },
+  { name: "Unity", icon: "unity", font: "font-sans", relatedProjects: [] },
+  { name: "Bootstrap", icon: "bootstrap", font: "font-sans", relatedProjects: [] },
+  { name: "MUI", icon: "mui", font: "font-sans", relatedProjects: [] },
 ];
 
 const SkillsSection: FC = () => {
+  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -61,7 +67,7 @@ const SkillsSection: FC = () => {
   };
 
   return (
-    <section id="skills" className="py-16 bg-white min-h-screen flex items-center">
+    <section id="skills" className="py-16 bg-dark-bg min-h-screen flex items-center">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -81,12 +87,14 @@ const SkillsSection: FC = () => {
           {skills.map((skill) => (
             <motion.div
               key={skill.name}
+              onClick={() => setSelectedSkill(skill.name === selectedSkill ? null : skill.name)}
               variants={cardVariants}
-              className="flex flex-col items-center group"
+              className="flex flex-col items-center group cursor-pointer"
               style={{
                 transformStyle: "preserve-3d",
                 transformOrigin: "center center"
               }}
+              whileHover={{ scale: 1.05 }}
             >
               <div className="w-20 h-20 flex items-center justify-center rounded-xl bg-white shadow-lg mb-3 group-hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2">
                 <Image
@@ -107,6 +115,35 @@ const SkillsSection: FC = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        <AnimatePresence>
+          {selectedSkill && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="mt-16 p-6 bg-card-bg rounded-xl"
+            >
+              <h3 className="text-2xl font-bold text-neon-blue mb-4">
+                Projects using {selectedSkill}
+              </h3>
+              <div className="grid gap-4">
+                {skills
+                  .find(s => s.name === selectedSkill)
+                  ?.relatedProjects.map((project) => (
+                    <motion.div
+                      key={project}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      className="p-4 bg-hover-bg rounded-lg text-text-primary"
+                    >
+                      {project}
+                    </motion.div>
+                  ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
