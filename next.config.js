@@ -8,16 +8,14 @@ const nextConfig = {
     ],
     unoptimized: true,
   },
-  experimental: {
-    optimizeCss: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
-  staticPageGenerationTimeout: 1000,
   eslint: {
     ignoreDuringBuilds: true,
   },
+  optimizeFonts: false,
+  poweredByHeader: false,
 }
 
 module.exports = nextConfig
