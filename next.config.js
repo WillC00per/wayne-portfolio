@@ -1,20 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['www.megavoxels.com'],
+    domains: [
+      'www.megavoxels.com',
+      'cdn.jsdelivr.net',
+      'cdn.simpleicons.org'
+    ],
     unoptimized: true,
   },
-  // Add these configurations
   experimental: {
     optimizeCss: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Increase timeout
   staticPageGenerationTimeout: 1000,
   eslint: {
-    ignoreDuringBuilds: true, // Add this line to ignore ESLint errors during build
+    ignoreDuringBuilds: true,
   },
 }
 

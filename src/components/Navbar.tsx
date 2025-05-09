@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <motion.nav
       className={`fixed top-0 w-full z-50 px-6 py-4 transition-all duration-300 shadow-lg
-        ${scrolled ? "bg-white/90 backdrop-blur-md" : "bg-transparent"}
+        ${scrolled ? "bg-white/90 dark:bg-dark-bg/95 backdrop-blur-md border-b border-tech-blue" : "bg-transparent"}
       `}
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
