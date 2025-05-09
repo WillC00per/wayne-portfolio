@@ -28,7 +28,13 @@ module.exports = {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-20px)' },
         }
-      }
+      },
+      gridTemplateColumns: {
+        'masonry': 'repeat(auto-fit, minmax(300px, 1fr))',
+      },
+      transitionTimingFunction: {
+        'masonry': 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
     },
   },
   plugins: [],

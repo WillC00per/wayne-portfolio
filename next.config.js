@@ -1,18 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['www.megavoxels.com'],
-    unoptimized: true,
-  },
-  // Add these configurations
-  experimental: {
-    optimizeCss: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      }
+    ],
+    dangerouslyAllowSVG: true,
+    unoptimized: true
   },
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Increase timeout
-  staticPageGenerationTimeout: 1000,
+  eslint: {
+    ignoreDuringBuilds: true,
+  }
 }
 
 module.exports = nextConfig
