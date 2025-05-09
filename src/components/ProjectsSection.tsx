@@ -109,7 +109,7 @@ const ProjectsSection: FC = () => {
                 </div>
               </motion.div>
 
-              {/* Project Image */}
+              {/* Project Image with error handling */}
               <motion.div
                 className={`${i % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}
                 variants={{
@@ -130,6 +130,10 @@ const ProjectsSection: FC = () => {
                     alt={project.title}
                     fill
                     className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:blur-sm"
+                    onError={(e: any) => {
+                      e.target.src = '/images/placeholder.jpg';
+                    }}
+                    unoptimized
                   />
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
