@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const HeroSection: FC = () => {
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center bg-[#f5f6fa] px-4 md:px-0 overflow-hidden">
+    <section className="relative flex min-h-screen w-full items-center justify-center bg-primary px-4 md:px-0 overflow-hidden">
       {/* Animated SVG Techy Background */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none z-0"
@@ -17,8 +17,8 @@ const HeroSection: FC = () => {
       >
         <defs>
           <linearGradient id="techy-gradient" x1="0" y1="0" x2="1440" y2="800" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#0EA5E9" stopOpacity="0.15" />
-            <stop offset="1" stopColor="#4ADE80" stopOpacity="0.10" />
+            <stop stopColor="#60a5fa" stopOpacity="0.15" />
+            <stop offset="1" stopColor="#93c5fd" stopOpacity="0.10" />
           </linearGradient>
         </defs>
         <motion.path
@@ -59,26 +59,26 @@ const HeroSection: FC = () => {
         <div className="flex-1 flex flex-col items-start z-10">
           {/* Floating Chip */}
           <motion.div
-            className="mb-4 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-tech-blue text-tech-blue font-semibold shadow-md"
+            className="mb-4 px-4 py-2 rounded-full bg-secondary/60 backdrop-blur-md border border-accent text-accent-light font-semibold shadow-md"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             Full Stack & Mobile Developer
           </motion.div>
-          <h1 className="text-5xl md:text-6xl font-extrabold text-black mb-4 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-text-primary mb-4 leading-tight">
             Wayne Chandler Gomez
           </h1>
-          <h2 className="text-2xl md:text-3xl font-semibold text-tech-blue mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-accent mb-6">
             Final Year BSIT Student
           </h2>
-          <p className="text-lg text-gray-700 mb-8 max-w-xl">
+          <p className="text-lg text-text-secondary mb-8 max-w-xl">
             Building practical web solutions for business and education. Passionate about automation, systems, and gamified learning.
           </p>
           <div className="flex gap-4">
             <motion.a
               href="#projects"
-              className="px-6 py-3 rounded-full bg-black text-white font-bold border-2 border-white shadow-md hover:bg-black/90 transition"
+              className="px-6 py-3 rounded-full bg-accent text-primary font-bold hover:bg-accent-light transition-colors duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -86,7 +86,7 @@ const HeroSection: FC = () => {
             </motion.a>
             <motion.a
               href="#contact"
-              className="px-6 py-3 rounded-full border-2 border-tech-blue text-tech-blue font-semibold bg-white shadow-md hover:bg-tech-blue/10 transition"
+              className="px-6 py-3 rounded-full border-2 border-accent text-accent font-semibold bg-transparent hover:bg-accent/10 transition-colors duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
             >

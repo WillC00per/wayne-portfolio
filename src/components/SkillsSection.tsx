@@ -67,13 +67,13 @@ const SkillsSection: FC = () => {
   };
 
   return (
-    <section id="skills" className="py-16 bg-dark-bg min-h-screen flex items-center">
+    <section id="skills" className="py-16 bg-secondary min-h-screen flex items-center">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-gray-900 mb-16 text-center"
+          className="text-3xl font-bold text-text-primary mb-16 text-center"
         >
           Skills & Technologies
         </motion.h2>
@@ -96,7 +96,7 @@ const SkillsSection: FC = () => {
               }}
               whileHover={{ scale: 1.05 }}
             >
-              <div className="w-20 h-20 flex items-center justify-center rounded-xl bg-white shadow-lg mb-3 group-hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2">
+              <div className="w-20 h-20 flex items-center justify-center rounded-xl bg-primary shadow-lg mb-3 group-hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2">
                 <Image
                   src={
                     skill.icon === "mui"
@@ -109,7 +109,7 @@ const SkillsSection: FC = () => {
                   className="group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
-              <span className={`${skill.font} text-gray-700 font-medium text-sm group-hover:text-tech-blue transition-colors duration-300`}>
+              <span className={`${skill.font} text-text-secondary font-medium text-sm group-hover:text-accent transition-colors duration-300`}>
                 {skill.name}
               </span>
             </motion.div>
@@ -122,9 +122,9 @@ const SkillsSection: FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="mt-16 p-6 bg-card-bg rounded-xl"
+              className="mt-16 p-6 bg-primary/50 backdrop-blur-sm rounded-xl border border-accent/20"
             >
-              <h3 className="text-2xl font-bold text-neon-blue mb-4">
+              <h3 className="text-2xl font-bold text-accent mb-4">
                 Projects using {selectedSkill}
               </h3>
               <div className="grid gap-4">
