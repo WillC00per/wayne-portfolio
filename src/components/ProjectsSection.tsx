@@ -9,48 +9,48 @@ const projects = [
     title: "Truck Delivery Automation",
     description: "End-to-end automation system including inventory management, PO generation, and business analytics",
     tech: ["Node.js", "React", "SQL", "Analytics"],
-    staticImage: "/images/projects/truck-delivery.png",
-    animatedImage: "/images/projects/truck-delivery-animated.gif",
+    staticImage: "/images/truck-delivery.png",
+    animatedImage: "/images/truck-delivery.gif",
     position: "left"
   },
   {
     title: "Science Quest",
     description: "2D Unity game developed in C# that makes learning science fun and interactive for students",
     tech: ["Unity", "C#", "Game Development", "Educational Design"],
-    staticImage: "/images/projects/science-quest.jpg",
-    animatedImage: "/images/projects/science-quest-animated.gif",
+    staticImage: "/images/science-quest.jpg",
+    animatedImage: "/images/science-quest.gif",
     position: "right"
   },
   {
     title: "ICS System - Civil Service Commission",
     description: "Streamlined document generation system for inventory management, reducing process time by 75%",
     tech: ["Database Design", "Process Automation", "Document Generation"],
-    staticImage: "/images/projects/ics-system.png",
-    animatedImage: "/images/projects/ics-system-animated.gif",
+    staticImage: "/images/ics-system.png",
+    animatedImage: "/images/ics-system.gif",
     position: "left"
   },
   {
     title: "SiyenSaya - Gamified E-Learning",
     description: "Interactive educational platform making science engaging for elementary students",
     tech: ["Game Development", "Educational Design", "React", "Node.js"],
-    staticImage: "/images/projects/siyensaya-static.jpg",
-    animatedImage: "/images/projects/siyensaya-animated.gif",
+    staticImage: "/images/siyensaya-static.jpg",
+    animatedImage: "/images/siyensaya.gif",
     position: "right"
   },
   {
     title: "Manga Recommendation AI",
     description: "AI-powered system for personalized manga recommendations (In Progress)",
     tech: ["Machine Learning", "Python", "React"],
-    staticImage: "/images/projects/manga-static.jpg",
-    animatedImage: "/images/projects/manga-animated.gif",
+    staticImage: "/images/manga-static.jpg",
+    animatedImage: "/images/manga.gif",
     position: "left"
   },
   {
     title: "PBA Website Restoration",
     description: "Modern restoration of the Philippine Basketball Association website (In Progress)",
     tech: ["Next.js", "TypeScript", "API Integration"],
-    staticImage: "/images/projects/pba-static.jpg",
-    animatedImage: "/images/projects/pba-animated.gif",
+    staticImage: "/images/pba-static.jpg",
+    animatedImage: "/images/pba.gif",
     position: "right"
   }
 ];
