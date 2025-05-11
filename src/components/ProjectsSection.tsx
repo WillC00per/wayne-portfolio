@@ -65,7 +65,7 @@ const ProjectsSection: FC = () => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="py-20 px-4 bg-dark-bg min-h-screen">
+    <section className="py-20 px-4 bg-dark-bg min-h-screen font-sans">
       <div className="max-w-7xl mx-auto">
         <h2 className="font-orbitron text-5xl font-bold text-text-primary mb-16 text-center">
           Featured <span className="text-neon-blue">Projects</span>
