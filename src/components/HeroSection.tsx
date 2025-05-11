@@ -16,40 +16,28 @@ const HeroSection: FC = () => {
         aria-hidden
       >
         <defs>
-          <linearGradient id="techy-gradient" x1="0" y1="0" x2="1440" y2="800" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#60a5fa" stopOpacity="0.15" />
-            <stop offset="1" stopColor="#93c5fd" stopOpacity="0.10" />
-          </linearGradient>
+          <radialGradient id="hero-gradient" cx="50%" cy="50%" r="80%" fx="50%" fy="50%">
+            <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.18" />
+            <stop offset="100%" stopColor="#1e293b" stopOpacity="0.01" />
+          </radialGradient>
         </defs>
+        <motion.circle
+          cx="720"
+          cy="400"
+          r="380"
+          fill="url(#hero-gradient)"
+          initial={{ opacity: 0.2, scale: 0.95 }}
+          animate={{ opacity: [0.2, 0.35, 0.2], scale: [0.95, 1.05, 0.95] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
         <motion.path
           d="M0,600 Q400,500 800,600 T1440,600"
-          stroke="url(#techy-gradient)"
-          strokeWidth="4"
+          stroke="#60a5fa"
+          strokeWidth="2"
           fill="none"
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
           transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-        />
-        <motion.circle
-          cx="1200"
-          cy="200"
-          r="80"
-          fill="url(#techy-gradient)"
-          initial={{ opacity: 0.2, scale: 0.8 }}
-          animate={{ opacity: [0.2, 0.4, 0.2], scale: [0.8, 1.1, 0.8] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.rect
-          x="100"
-          y="100"
-          width="120"
-          height="120"
-          rx="30"
-          fill="#0EA5E9"
-          fillOpacity="0.07"
-          initial={{ rotate: 0 }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
         />
       </svg>  
 

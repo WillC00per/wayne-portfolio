@@ -5,6 +5,7 @@ import ProjectsSection from "../components/ProjectsSection";
 import Navbar from "../components/Navbar";
 import SkillsSection from "../components/SkillsSection";
 import AboutSection from "../components/AboutSection";
+import ContactSection from "../components/ContactSection";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -39,6 +40,10 @@ export default function Home() {
 
       <motion.div variants={fadeInUp}>
         <AboutSection />
+      </motion.div>
+
+      <motion.div variants={fadeInUp}>
+        <ContactSection />
       </motion.div>
     </main>
   );

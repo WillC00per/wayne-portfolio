@@ -16,15 +16,33 @@ const Navbar = () => {
   useEffect(() => {
     if (dark) {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   }, [dark]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setDark(localStorage.getItem("theme") === "dark");
+    }
+  }, []);
+
+  const handleNavClick = (href: string) => {
+    const el = document.querySelector(href);
+    if (el) {
+      window.scrollTo({
+        top: (el as HTMLElement).offsetTop - 80,
+        behavior: "smooth"
+      });
+    }
+  };
 
   return (
     <motion.nav
       className={`fixed top-0 w-full z-50 px-6 py-4 transition-all duration-300 shadow-lg
-        ${scrolled ? "bg-white/90 dark:bg-dark-bg/95 backdrop-blur-md border-b border-tech-blue" : "bg-transparent"}
+        ${scrolled ? "bg-white/90 dark:bg-dark-bg/95 backdrop-blur-md border-b border-tech-blue" : "bg-white dark:bg-dark-bg"}
       `}
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
@@ -39,7 +57,11 @@ const Navbar = () => {
             <motion.a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-gray-800 dark:text-gray-100 font-semibold hover:text-tech-blue dark:hover:text-neon-green transition-colors text-lg"
+              onClick={e => {
+                e.preventDefault();
+                handleNavClick(`#${item.toLowerCase()}`);
+              }}
+              className="text-gray-900 dark:text-gray-100 font-semibold hover:text-tech-blue dark:hover:text-neon-green transition-colors text-lg"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
             >

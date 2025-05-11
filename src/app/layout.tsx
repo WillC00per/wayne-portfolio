@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${plusJakarta.className} bg-primary text-text-primary antialiased`}>
+      <body className={`${plusJakarta.className} bg-white dark:bg-dark-bg text-text-primary antialiased transition-colors duration-500`}>
         {children}
       </body>
     </html>

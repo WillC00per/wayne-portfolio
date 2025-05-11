@@ -25,9 +25,31 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+  transition: background 0.5s, color 0.5s;
+}
+
+html.dark body {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+html.dark .bg-primary {
+  background-color: #0f172a !important;
+}
+html.dark .bg-secondary {
+  background-color: #1e293b !important;
+}
+html.dark .bg-card-bg {
+  background-color: #1e293b !important;
+}
+html.dark .text-primary,
+html.dark .text-text-primary {
+  color: #f1f5f9 !important;
+}
+html.dark .text-secondary,
+html.dark .text-text-secondary {
+  color: #cbd5e1 !important;
 }
 
 /* Game-themed styles */
