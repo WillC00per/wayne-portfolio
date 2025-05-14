@@ -16,10 +16,7 @@ const ProjectsSection: FC = () => {
   };
 
   return (
-    <section
-      id="projects"
-      className="py-20 px-4 bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary min-h-screen font-sans relative overflow-hidden transition-colors duration-500"
-    >
+    <section className="py-20 px-4 bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary min-h-screen font-sans relative overflow-hidden transition-colors duration-500">
       {/* SVG Grid Background */}
       <svg
         className="absolute inset-0 w-full h-full z-0 pointer-events-none"
@@ -37,6 +34,48 @@ const ProjectsSection: FC = () => {
           animate={{ opacity: [0.08, 0.16, 0.08], pathLength: [0.8, 1, 0.8] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
+        {/* Pixel Circuit Lines */}
+        {[0, 1, 2].map((i) => (
+          <motion.path
+            key={`circuit-${i}`}
+            d={`M${i * 400},0 v200 h400 v200 h-200`}
+            stroke="#60a5fa"
+            strokeWidth="4"
+            strokeDasharray="20,20"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: [0, 1] }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              delay: i * 1.5,
+              ease: "linear"
+            }}
+            opacity="0.1"
+          />
+        ))}
+
+        {/* Pixel Data Blocks */}
+        {[...Array(8)].map((_, i) => (
+          <motion.rect
+            key={`block-${i}`}
+            x={200 + i * 150}
+            y={i % 2 ? 300 : 500}
+            width="20"
+            height="20"
+            fill="#60a5fa"
+            initial={{ opacity: 0.1 }}
+            animate={{
+              y: i % 2 ? [300, 400, 300] : [500, 400, 500],
+              opacity: [0.1, 0.3, 0.1]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              delay: i * 0.4,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
       </svg>
       <div className="max-w-7xl mx-auto relative z-10">
         <h2 className=" text-5xl font-bold text-text-primary mb-16 text-center">

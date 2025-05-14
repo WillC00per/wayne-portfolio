@@ -11,11 +11,24 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="light">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${plusJakarta.className} bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary antialiased transition-all duration-500`}>
+      <body className={`${plusJakarta.className} theme-transition bg-primary text-primary antialiased`}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const storedTheme = localStorage.getItem('theme');
+                if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+                  document.documentElement.classList.add('dark');
+                }
+              })()
+            `,
+          }}
+        />
         {children}
       </body>
     </html>

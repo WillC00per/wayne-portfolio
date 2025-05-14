@@ -31,7 +31,7 @@ const Navbar = () => {
     }
   }, []);
 
-  const navItems = ["Projects", "About", "Skills", "Contact"];
+  const navItems = ["Projects",  "Skills", "About", "Contact"];
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
@@ -48,7 +48,7 @@ const Navbar = () => {
     <motion.nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 
         ${scrolled 
-          ? "py-2 backdrop-blur-md bg-white/80 dark:bg-dark-bg/80 shadow-lg" 
+          ? "py-2 backdrop-blur-md bg-white/80 dark:bg-[#0f172ae6] shadow-lg" 
           : "py-4 bg-transparent"}`}
     >
       <div className="max-w-7xl mx-auto px-4">
@@ -61,7 +61,13 @@ const Navbar = () => {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className={`font-extrabold text-2xl tracking-wider transition-colors cursor-pointer
-              ${dark ? "text-white" : "text-tech-blue"}`}
+              ${
+                scrolled
+                  ? "text-black"
+                  : dark
+                  ? "text-white"
+                  : "text-tech-blue"
+              }`}
             whileHover={{ scale: 1.05 }}
           >
             WCG
@@ -78,9 +84,13 @@ const Navbar = () => {
                   handleNavClick(`#${item.toLowerCase()}`);
                 }}
                 className={`text-lg font-medium transition-colors
-                  ${dark 
-                    ? "text-gray-300 hover:text-white" 
-                    : "text-gray-600 hover:text-tech-blue"}`}
+                  ${
+                    scrolled
+                      ? "text-black hover:text-tech-blue"
+                      : dark
+                      ? "text-gray-300 hover:text-white"
+                      : "text-gray-600 hover:text-tech-blue"
+                  }`}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >

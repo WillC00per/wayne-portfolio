@@ -76,26 +76,58 @@ const SkillsSection: FC = () => {
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden
       >
-        <motion.circle
-          cx="200"
-          cy="80"
-          r="40"
-          fill="#60a5fa"
-          fillOpacity="0.10"
-          initial={{ cy: 80 }}
-          animate={{ cy: [80, 120, 80] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.circle
-          cx="1240"
-          cy="220"
-          r="32"
-          fill="#38bdf8"
-          fillOpacity="0.10"
-          initial={{ cy: 220 }}
-          animate={{ cy: [220, 180, 220] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
+        {/* Pixel Grid */}
+        {[...Array(12)].map((_, i) => (
+          <rect
+            key={`grid-${i}`}
+            x={0}
+            y={i * 30}
+            width="100%"
+            height="2"
+            fill="#60a5fa"
+            opacity="0.05"
+          />
+        ))}
+
+        {/* Pixel Radar Animation */}
+        <motion.g
+          animate={{ rotate: 360 }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          style={{ originX: "720px", originY: "160px" }}
+        >
+          {[...Array(4)].map((_, i) => (
+            <rect
+              key={`radar-${i}`}
+              x="720"
+              y="160"
+              width="240"
+              height="4"
+              fill="#60a5fa"
+              opacity={0.2 - i * 0.05}
+              transform={`rotate(${90 * i} 720 160)`}
+            />
+          ))}
+        </motion.g>
+
+        {/* Pixel Blips */}
+        {[...Array(6)].map((_, i) => (
+          <motion.rect
+            key={`blip-${i}`}
+            x={600 + i * 40}
+            y={140 + (i % 2) * 40}
+            width="8"
+            height="8"
+            fill="#60a5fa"
+            initial={{ opacity: 0.1 }}
+            animate={{ opacity: [0.1, 0.8, 0.1] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: i * 0.3,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
       </svg>
       <div className="max-w-4xl mx-auto px-4 relative z-10 w-full">
         <h2 className={`text-3xl font-bold text-text-primary mb-16 text-center ${!deckOpen ? "opacity-0 pointer-events-none" : ""}`}>

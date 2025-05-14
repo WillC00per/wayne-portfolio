@@ -1,13 +1,146 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+const SunSVG = () => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+    <circle cx="24" cy="24" r="10" fill="#FFD600" />
+    {[...Array(8)].map((_, i) => (
+      <rect
+        key={i}
+        x="22"
+        y="4"
+        width="4"
+        height="8"
+        rx="2"
+        fill="#FFD600"
+        transform={`rotate(${i * 45} 24 24)`}
+      />
+    ))}
+  </svg>
+);
+
+const MoonSVG = () => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+    <path
+      d="M34 38c-7.732 0-14-6.268-14-14 0-4.418 2.014-8.354 5.167-10.917C25.08 13.028 24.543 13 24 13c-6.627 0-12 5.373-12 12s5.373 12 12 12c3.41 0 6.48-1.432 8.667-3.75C35.08 37.028 34.543 37 34 37z"
+      fill="#F1F5F9"
+    />
+    <circle cx="32" cy="18" r="2" fill="#E0E7FF" />
+    <circle cx="28" cy="28" r="1.5" fill="#E0E7FF" />
+    <circle cx="36" cy="26" r="1" fill="#E0E7FF" />
+  </svg>
+);
+
+const PixelSun = ({ isVisible, hide }: { isVisible: boolean; hide: boolean }) => (
+  <motion.svg
+    width="96"
+    height="96"
+    viewBox="0 0 96 96"
+    fill="none"
+    className="absolute"
+    style={{ top: 32, right: 32 }}
+    initial={false}
+    animate={{
+      y: isVisible ? (hide ? -80 : 0) : 80,
+      opacity: isVisible ? (hide ? 0 : 1) : 0,
+      scale: hide ? 0.7 : 1,
+      pointerEvents: isVisible && !hide ? "auto" : "none",
+      rotate: isVisible ? 360 : 0,
+    }}
+    transition={{
+      type: "spring",
+      stiffness: 80,
+      damping: 18,
+      opacity: { duration: 0.5 },
+      scale: { duration: 0.5 },
+      y: { duration: 0.5 },
+      rotate: { duration: 24, repeat: Infinity, ease: "linear" }
+    }}
+  >
+    {/* Pixel sun core */}
+    <rect x="32" y="32" width="32" height="32" fill="#FFD600" />
+    {/* Pixel rays */}
+    <rect x="44" y="8" width="8" height="16" fill="#FFD600" />
+    <rect x="44" y="72" width="8" height="16" fill="#FFD600" />
+    <rect x="8" y="44" width="16" height="8" fill="#FFD600" />
+    <rect x="72" y="44" width="16" height="8" fill="#FFD600" />
+    <rect x="20" y="20" width="12" height="6" transform="rotate(-45 26 23)" fill="#FFD600" />
+    <rect x="64" y="70" width="12" height="6" transform="rotate(-45 70 73)" fill="#FFD600" />
+    <rect x="20" y="70" width="12" height="6" transform="rotate(45 26 73)" fill="#FFD600" />
+    <rect x="64" y="20" width="12" height="6" transform="rotate(45 70 23)" fill="#FFD600" />
+  </motion.svg>
+);
+
+const PixelMoon = ({ isVisible, hide }: { isVisible: boolean; hide: boolean }) => (
+  <motion.svg
+    width="180"
+    height="180"
+    viewBox="0 0 180 180"
+    fill="none"
+    className="absolute"
+    style={{ top: 16, right: 16 }}
+    initial={false}
+    animate={{
+      y: isVisible ? (hide ? -120 : 0) : 120,
+      opacity: isVisible ? (hide ? 0 : 1) : 0,
+      scale: hide ? 0.7 : 1,
+      pointerEvents: isVisible && !hide ? "auto" : "none",
+      rotate: isVisible ? 360 : 0,
+    }}
+    transition={{
+      type: "spring",
+      stiffness: 80,
+      damping: 18,
+      opacity: { duration: 0.5 },
+      scale: { duration: 0.5 },
+      y: { duration: 0.5 },
+      rotate: { duration: 36, repeat: Infinity, ease: "linear" }
+    }}
+  >
+    {/* Pixel moon crescent (more circular moon) */}
+    <circle cx="112" cy="90" r="44" fill="#E0E7FF" />
+    <circle cx="128" cy="90" r="32" fill="#0f172a" />
+    {/* Pixel stars */}
+    <rect x="128" y="48" width="8" height="8" fill="#E0E7FF" />
+    <rect x="144" y="80" width="8" height="8" fill="#E0E7FF" />
+    <rect x="56" y="104" width="8" height="8" fill="#E0E7FF" />
+  </motion.svg>
+);
+
 const HeroSection: FC = () => {
+  // Track theme on client for correct sun/moon animation
+  const [isDark, setIsDark] = useState(false);
+  const [hideIcon, setHideIcon] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () =>
+      setIsDark(document.documentElement.classList.contains("dark"));
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHideIcon(window.scrollY > 40);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="relative flex min-h-screen w-full items-center justify-center bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary px-4 md:px-0 overflow-hidden transition-colors duration-500">
-      {/* Animated SVG Techy Background */}
+      {/* Pixel Sun/Moon Animation - bigger moon and slow rotation, disappears on scroll */}
+      <div className="fixed z-30" style={{ top: 0, right: 0 }}>
+        <PixelSun isVisible={!isDark} hide={hideIcon} />
+        <PixelMoon isVisible={isDark} hide={hideIcon} />
+      </div>
+
+      {/* 8-bit Pixel Game Background */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none z-0"
         viewBox="0 0 1440 800"
@@ -15,29 +148,75 @@ const HeroSection: FC = () => {
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden
       >
-        <defs>
-          <radialGradient id="hero-gradient" cx="50%" cy="50%" r="80%" fx="50%" fy="50%">
-            <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.18" />
-            <stop offset="100%" stopColor="#1e293b" stopOpacity="0.01" />
-          </radialGradient>
-        </defs>
-        <motion.circle
-          cx="720"
-          cy="400"
-          r="380"
-          fill="url(#hero-gradient)"
-          initial={{ opacity: 0.2, scale: 0.95 }}
-          animate={{ opacity: [0.2, 0.35, 0.2], scale: [0.95, 1.05, 0.95] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.path
-          d="M0,600 Q400,500 800,600 T1440,600"
-          stroke="#60a5fa"
-          strokeWidth="2"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+        {/* Pixel Grid Background */}
+        {[...Array(20)].map((_, i) => (
+          <rect
+            key={`grid-${i}`}
+            x={i * 72}
+            y={0}
+            width={2}
+            height="100%"
+            fill="#60a5fa"
+            opacity="0.05"
+          />
+        ))}
+        
+        {/* Animated Pixel Clouds */}
+        {[0, 1, 2].map((i) => (
+          <motion.g key={`cloud-${i}`}
+            animate={{ x: [-100, 1540] }}
+            transition={{
+              duration: 20 + i * 5,
+              repeat: Infinity,
+              ease: "linear",
+              delay: i * 7
+            }}
+          >
+            <rect x="0" y={100 + i * 120} width="60" height="20" fill="#60a5fa" opacity="0.1" />
+            <rect x="20" y={80 + i * 120} width="40" height="20" fill="#60a5fa" opacity="0.1" />
+          </motion.g>
+        ))}
+
+        {/* 8-bit Mountains */}
+        <path d="M0 600 L200 400 L400 600 L600 300 L800 600 L1000 400 L1200 600 L1440 450 L1440 800 L0 800 Z" 
+          fill="#60a5fa" fillOpacity="0.05" />
+
+        {/* Pixel Stars */}
+        {[...Array(15)].map((_, i) => (
+          <motion.rect
+            key={`star-${i}`}
+            x={80 + i * 90}
+            y={50 + (i % 3) * 60}
+            width="6"
+            height="6"
+            fill="#60a5fa"
+            initial={{ opacity: 0.1 }}
+            animate={{ opacity: [0.1, 0.8, 0.1] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: i * 0.2,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+
+        {/* Animated Ground Line */}
+        <motion.rect
+          x="0"
+          y="750"
+          width="1440"
+          height="4"
+          fill="#60a5fa"
+          opacity="0.2"
+          animate={{
+            opacity: [0.2, 0.4, 0.2]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         />
       </svg>  
 

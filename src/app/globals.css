@@ -3,6 +3,14 @@
 :root {
   --background: #0f172a;
   --foreground: #f1f5f9;
+  --primary: #ffffff;
+  --secondary: #f8fafc;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --accent: #60a5fa;
+  --accent-light: #93c5fd;
+  --card-bg: #ffffff;
+  --hover-bg: #f1f5f9;
 }
 
 @theme inline {
@@ -17,6 +25,17 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+[data-theme='dark'] {
+  --primary: #0f172a;
+  --secondary: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --accent: #38bdf8;
+  --accent-light: #60a5fa;
+  --card-bg: #1e293b;
+  --hover-bg: #334155;
 }
 
 html {
@@ -111,4 +130,48 @@ html.dark .text-gray-900 {
 .project-grid:hover > *:not(:hover) {
   opacity: 0.4;
   filter: grayscale(100%) blur(2px);
+}
+
+/* Updated theme transitions */
+.theme-transition {
+  transition: 
+    background-color 0.5s ease,
+    color 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+/* SVG Colors */
+.svg-primary {
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.svg-accent {
+  @apply text-accent dark:text-accent-light;
+}
+
+.svg-grid {
+  @apply text-gray-200 dark:text-gray-800;
+}
+
+/* Updated background colors */
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.bg-card {
+  background-color: var(--card-bg);
+}
+
+/* Updated text colors */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
 }

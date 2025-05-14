@@ -9,19 +9,46 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#1e293b',    // Slate 800 - Main background
-        'secondary': '#334155',  // Slate 700 - Secondary background
-        'accent': '#60a5fa',     // Blue 400 - Primary accent
-        'accent-light': '#93c5fd', // Blue 300 - Light accent
-        'text-primary': '#f1f5f9', // Slate 100 - Primary text
-        'text-secondary': '#cbd5e1', // Slate 300 - Secondary text
-        'dark-bg': '#0f172a',    // Slate 900 - Darker background
-        'card-bg': '#1e293b',    // Slate 800 - Card background
-        'hover-bg': '#475569',   // Slate 600 - Hover state
-        'border-color': '#475569', // Slate 600 - Borders
-        'tech-blue': '#60a5fa',   // Blue 400 - Tech stack
-        'deep-teal': '#0f766e',  // Teal 800 - Deep accent
-        'neon-blue': '#38bdf8',  // Sky 400 - Highlights
+        'primary': {
+          light: '#ffffff',
+          dark: '#0f172a',
+        },
+        'secondary': {
+          light: '#f8fafc',
+          dark: '#1e293b',
+        },
+        'accent': {
+          light: '#60a5fa',
+          dark: '#38bdf8',
+        },
+        'accent-light': {
+          light: '#93c5fd',
+          dark: '#60a5fa',
+        },
+        'text-primary': {
+          light: '#0f172a',
+          dark: '#f1f5f9',
+        },
+        'text-secondary': {
+          light: '#334155',
+          dark: '#cbd5e1',
+        },
+        'card-bg': {
+          light: '#ffffff',
+          dark: '#1e293b',
+        },
+        'hover-bg': {
+          light: '#f1f5f9',
+          dark: '#334155',
+        },
+        'tech-blue': {
+          light: '#60a5fa',
+          dark: '#38bdf8',
+        },
+        'neon-blue': {
+          light: '#38bdf8',
+          dark: '#0ea5e9',
+        },
       },
       animation: {
         'flow': 'flow 20s linear infinite',
