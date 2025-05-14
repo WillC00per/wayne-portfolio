@@ -54,13 +54,18 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <motion.span 
-            className={`font-extrabold text-2xl tracking-wider transition-colors
+          <motion.a
+            href="#"
+            onClick={e => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className={`font-extrabold text-2xl tracking-wider transition-colors cursor-pointer
               ${dark ? "text-white" : "text-tech-blue"}`}
             whileHover={{ scale: 1.05 }}
           >
             WCG
-          </motion.span>
+          </motion.a>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
