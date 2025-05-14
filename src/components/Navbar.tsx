@@ -1,11 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { FiMenu, FiX, FiMoon, FiSun } from "react-icons/fi";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [dark, setDark] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -29,11 +31,14 @@ const Navbar = () => {
     }
   }, []);
 
+  const navItems = ["Projects", "About", "Skills", "Contact"];
+
   const handleNavClick = (href: string) => {
-    const el = document.querySelector(href);
+    setMobileMenuOpen(false);
+    const el = document.getElementById(href.replace('#', ''));
     if (el) {
       window.scrollTo({
-        top: (el as HTMLElement).offsetTop - 80,
+        top: el.getBoundingClientRect().top + window.scrollY - 80,
         behavior: "smooth"
       });
     }
@@ -41,45 +46,118 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 w-full z-50 px-6 py-4 transition-all duration-300 shadow-lg
-        ${scrolled ? "bg-white/90 dark:bg-dark-bg/95 backdrop-blur-md border-b border-tech-blue" : "bg-white dark:bg-dark-bg"}
-      `}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 
+        ${scrolled 
+          ? "py-2 backdrop-blur-md bg-white/80 dark:bg-dark-bg/80 shadow-lg" 
+          : "py-4 bg-transparent"}`}
     >
-      <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <motion.span 
-          className="text-tech-blue dark:text-neon-green font-extrabold text-2xl tracking-widest"
-          whileHover={{ scale: 1.08 }}
-        >
-          WCG
-        </motion.span>
-        <div className="flex gap-8 items-center">
-          {["Projects", "About", "Skills", "Contact"].map((item) => (
-            <motion.a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={e => {
-                e.preventDefault();
-                handleNavClick(`#${item.toLowerCase()}`);
-              }}
-              className="text-gray-900 dark:text-gray-100 font-semibold hover:text-tech-blue dark:hover:text-neon-green transition-colors text-lg"
-              whileHover={{ y: -2 }}
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <motion.span 
+            className={`font-extrabold text-2xl tracking-wider transition-colors
+              ${dark ? "text-white" : "text-tech-blue"}`}
+            whileHover={{ scale: 1.05 }}
+          >
+            WCG
+          </motion.span>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <motion.a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(`#${item.toLowerCase()}`);
+                }}
+                className={`text-lg font-medium transition-colors
+                  ${dark 
+                    ? "text-gray-300 hover:text-white" 
+                    : "text-gray-600 hover:text-tech-blue"}`}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {item}
+              </motion.a>
+            ))}
+            
+            {/* Theme Toggle */}
+            <motion.button
+              onClick={() => setDark(d => !d)}
+              className={`p-2 rounded-full transition-colors
+                ${dark 
+                  ? "bg-gray-800 text-gray-200 hover:bg-gray-700" 
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {item}
-            </motion.a>
-          ))}
-          <button
-            aria-label="Toggle Dark Mode"
-            onClick={() => setDark((d) => !d)}
-            className="ml-4 p-2 rounded-full border border-tech-blue bg-white/70 dark:bg-dark-bg/80 hover:bg-tech-blue/10 dark:hover:bg-neon-green/10 transition"
-          >
-            {dark ? (
-              <span role="img" aria-label="Light Mode">🌞</span>
-            ) : (
-              <span role="img" aria-label="Dark Mode">🌙</span>
-            )}
-          </button>
+              {dark ? <FiSun size={20} /> : <FiMoon size={20} />}
+            </motion.button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <motion.button
+              onClick={() => setDark(d => !d)}
+              className={`p-2 mr-2 rounded-full transition-colors
+                ${dark 
+                  ? "bg-gray-800 text-gray-200" 
+                  : "bg-gray-100 text-gray-600"}`}
+              whileTap={{ scale: 0.95 }}
+            >
+              {dark ? <FiSun size={20} /> : <FiMoon size={20} />}
+            </motion.button>
+            
+            <motion.button
+              onClick={() => setMobileMenuOpen(prev => !prev)}
+              className={`p-2 rounded-full transition-colors
+                ${dark 
+                  ? "text-white hover:bg-gray-800" 
+                  : "text-gray-600 hover:bg-gray-100"}`}
+              whileTap={{ scale: 0.95 }}
+            >
+              {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </motion.button>
+          </div>
         </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="fixed inset-x-0 top-[72px] md:hidden overflow-hidden z-50"
+            >
+              <div className={`py-4 space-y-4 px-4 backdrop-blur-lg ${
+                dark 
+                  ? "bg-dark-bg/95 border-b border-gray-800" 
+                  : "bg-white/95 border-b border-gray-200"
+              }`}>
+                {navItems.map((item) => (
+                  <motion.a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(`#${item.toLowerCase()}`);
+                    }}
+                    className={`block py-3 px-4 text-lg font-medium rounded-lg transition-colors
+                      ${dark 
+                        ? "text-gray-300 hover:text-white hover:bg-gray-800" 
+                        : "text-gray-600 hover:text-tech-blue hover:bg-gray-50"}`}
+                    whileHover={{ x: 10 }}
+                  >
+                    {item}
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.nav>
   );

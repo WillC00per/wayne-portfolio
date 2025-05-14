@@ -6,7 +6,7 @@ import { FaPhoneAlt, FaEnvelope, FaLinkedin } from "react-icons/fa";
 import Image from "next/image";
 
 const ContactSection: FC = () => (
-  <section id="contact" className="py-20 bg-primary relative overflow-hidden">
+  <section id="contact" className="py-20 bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary relative overflow-hidden transition-colors duration-500">
     <div className="max-w-3xl mx-auto px-4 relative z-10">
       <motion.h2
         className="font-orbitron text-4xl font-bold text-accent mb-10 text-center"

@@ -24,24 +24,20 @@ export default function Home() {
   };
 
   return (
-    <main className="relative bg-dark-bg">
+    <main className="relative bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary transition-colors duration-500">
       <Navbar />
       <motion.div variants={fadeInUp}>
         <HeroSection />
       </motion.div>
-
       <motion.div variants={fadeInUp}>
         <ProjectsSection />
       </motion.div>
-
       <motion.div variants={fadeInUp}>
         <SkillsSection />
       </motion.div>
-
       <motion.div variants={fadeInUp}>
         <AboutSection />
       </motion.div>
-
       <motion.div variants={fadeInUp}>
         <ContactSection />
       </motion.div>

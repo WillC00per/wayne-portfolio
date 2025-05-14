@@ -66,7 +66,7 @@ const SkillsSection: FC = () => {
     <section
       id="skills"
       ref={sectionRef}
-      className="py-16 bg-secondary min-h-screen flex flex-col items-center relative overflow-hidden"
+      className="py-16 bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary min-h-screen flex flex-col items-center relative overflow-hidden transition-colors duration-500"
     >
       {/* SVG Dots Background */}
       <svg

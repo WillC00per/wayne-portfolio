@@ -7,6 +7,8 @@ export interface Project {
   animatedImage: string;
   live: string;
   github: string;
+  features?: string[];
+  technicalDetails?: string;
 }
 
 export const projects: Project[] = [
@@ -20,7 +22,15 @@ export const projects: Project[] = [
     staticImage: "/images/truck-delivery.png",
     animatedImage: "/images/truck-delivery.gif",
     live: "#",
-    github: "#"
+    github: "#",
+    features: [
+      "Automated inventory tracking and management",
+      "Real-time delivery status updates",
+      "Advanced reporting and analytics dashboard",
+      "Custom PDF generation for invoices and reports",
+      "Role-based access control system"
+    ],
+    technicalDetails: "Built with React and Node.js, utilizing MUI for the interface and SQLite for data persistence. Implements real-time updates using WebSocket connections and includes a custom reporting engine built with ExcelJS and JSPDF."
   },
   {
     slug: "ics-system-csc",

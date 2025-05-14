@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const HeroSection: FC = () => {
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center bg-primary px-4 md:px-0 overflow-hidden">
+    <section className="relative flex min-h-screen w-full items-center justify-center bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary px-4 md:px-0 overflow-hidden transition-colors duration-500">
       {/* Animated SVG Techy Background */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none z-0"

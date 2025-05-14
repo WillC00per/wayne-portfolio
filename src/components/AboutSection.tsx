@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const AboutSection: FC = () => (
-  <section id="about" className="py-20 bg-primary relative overflow-hidden">
+  <section id="about" className="py-20 bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary relative overflow-hidden transition-colors duration-500">
     {/* SVG Wave Background */}
     <svg
       className="absolute left-0 top-0 w-full h-full z-0 pointer-events-none"

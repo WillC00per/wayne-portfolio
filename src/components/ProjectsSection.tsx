@@ -16,7 +16,10 @@ const ProjectsSection: FC = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-dark-bg min-h-screen font-sans relative overflow-hidden">
+    <section
+      id="projects"
+      className="py-20 px-4 bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary min-h-screen font-sans relative overflow-hidden transition-colors duration-500"
+    >
       {/* SVG Grid Background */}
       <svg
         className="absolute inset-0 w-full h-full z-0 pointer-events-none"
@@ -63,10 +66,10 @@ const ProjectsSection: FC = () => {
                 <div className={`absolute inset-0 transition-all duration-300 ${hovered === i ? 'bg-black/80' : 'bg-black/60'}`} />
                 {/* Content */}
                 <div className="relative z-10 flex flex-col items-center justify-center text-center w-full px-6">
-                  <h3 className={`text-3xl md:text-4xl font-bold mb-3 transition-all duration-300 ${hovered === i ? 'text-white scale-105' : 'text-accent'}`}>
+                  <h3 className={`text-3xl md:text-4xl font-bold mb-3 transition-all duration-300 ${hovered === i ? 'text-white scale-105' : 'text-white'}`}>
                     {project.title}
                   </h3>
-                  <p className={`mb-6 text-lg font-medium transition-all duration-300 ${hovered === i ? 'text-white opacity-100' : 'text-text-secondary opacity-90'}`}>
+                  <p className={`mb-6 text-lg font-medium transition-all duration-300 ${hovered === i ? 'text-white opacity-100' : 'text-white opacity-90'}`}>
                     {project.description}
                   </p>
                   <div className="flex flex-wrap justify-center gap-3 mb-6">
@@ -74,7 +77,7 @@ const ProjectsSection: FC = () => {
                       <span
                         key={tech}
                         className={`px-4 py-1 rounded-full text-sm font-semibold transition-all duration-300
-                          ${hovered === i ? 'bg-accent text-white' : 'bg-secondary text-accent-light'}`}
+                          ${hovered === i ? 'bg-accent text-white' : 'bg-secondary text-white'}`}
                       >
                         {tech}
                       </span>
@@ -88,7 +91,7 @@ const ProjectsSection: FC = () => {
                         openInNewTab(project.live);
                       }}
                       className={`px-6 py-2 rounded-lg font-bold transition-all duration-300
-                        ${hovered === i ? 'bg-accent text-white shadow-lg hover:bg-accent-light' : 'bg-accent-light text-accent'}`}
+                        ${hovered === i ? 'bg-accent text-white shadow-lg hover:bg-accent-light' : 'bg-accent-light text-white'}`}
                     >
                       VIEW LIVE
                     </button>
@@ -99,7 +102,7 @@ const ProjectsSection: FC = () => {
                         openInNewTab(project.github);
                       }}
                       className={`px-6 py-2 rounded-lg font-bold transition-all duration-300
-                        ${hovered === i ? 'bg-secondary text-white shadow-lg hover:bg-accent' : 'bg-secondary/80 text-accent-light'}`}
+                        ${hovered === i ? 'bg-secondary text-white shadow-lg hover:bg-accent' : 'bg-secondary/80 text-white'}`}
                     >
                       GITHUB
                     </button>
